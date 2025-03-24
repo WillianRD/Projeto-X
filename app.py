@@ -1,6 +1,6 @@
 from flask import Flask, render_template,url_for, request, flash
 from validarsenha import validarSenha
-from validarEmail import validarEmailUsuario
+from validarEmail import validarEmail
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -21,13 +21,12 @@ def index():
             flash('⚠️ A senha não pode ser letras e deve ser maior que 8 números')
         
         # Verifica se o email não é válido
-        if not validarEmailUsuario(email):
+        if not validarEmail(email):
             error=True
             flash('⚠️ O e-mail fornecido é inválido.')
 
         print(f"📧 Email: {email}")
         print(f"🔑 Senha {senha_str}")
-        # print("✅ Senha válida "+ validarSenha(senha))
-        print(validarSenha(senha_str))
-        # print(f"✅ Email válido {validarEmailUsuario}(email)")
+        print('Validando Senha: ',validarSenha(senha_str))
+        print('Validando Email: ',validarEmail(email))
     return render_template('index.html',error=error)
