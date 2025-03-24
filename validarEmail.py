@@ -1,10 +1,10 @@
 import re
 
 def validarEmail(email):
-    # Expressão regular para validar o formato do e-mail
-    padrao = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    # Expressão para validar apenas e-mails do Gmail
+    padrao = r'^[a-zA-Z0-9_.+-]+@gmail\.com$'
     
     if re.match(padrao, email):
-        return "E-mail válido!"
+        return "E-mail do Gmail válido!"
     else:
-        return "E-mail inválido. Por favor, insira um formato válido."
+        return "E-mail inválido ou não é do Gmail."
